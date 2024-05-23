@@ -1,0 +1,12 @@
+[package]
+name = "rust-license"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5.4", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_yaml = "0.9"
+regex = "1.10.4"
+thiserror = "1.0"
+tempdir = "0.3"
