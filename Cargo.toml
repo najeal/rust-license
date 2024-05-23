@@ -2,6 +2,15 @@
 name = "rust-license"
 version = "0.1.0"
 edition = "2021"
+authors = ["nathan haim"]
+license = "Apache-2.0"
+description = "rust tool to check, remove or apply license header to rust files"
+readme = "README.md"
+homepage = "https://github.com/najeal/rust-license"
+repository = "https://github.com/najeal/rust-license"
+keywords = ["tool", "header", "license", "rust", "cli"]
+categories = ["command-line-utilities"]
+
 
 [dependencies]
 clap = { version = "4.5.4", features = ["derive"] }
