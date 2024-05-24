@@ -1,10 +1,13 @@
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 use serde_yaml;
-use std::{fs::File, io::{self,Read}};
+use std::{
+    fs::File,
+    io::{self, Read},
+};
 
 #[derive(Serialize, Deserialize, PartialEq, Debug)]
 pub struct Config {
-    pub headers: String
+    pub headers: String,
 }
 
 pub fn load(path: &str) -> io::Result<Config> {
@@ -19,17 +22,16 @@ fn parse(c: &str) -> Config {
     return cfg;
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
     const expected_headers: &str = "// Copyright (c) Company 2024";
 
     #[test]
-    fn test_parse(){
+    fn test_parse() {
         let yaml = include_str!("config_test.yaml");
         //let yaml = "headers: |
-    // Copyright (c) Company 2024";
+        // Copyright (c) Company 2024";
         let res = parse(yaml);
         assert_eq!(res.headers, expected_headers);
     }

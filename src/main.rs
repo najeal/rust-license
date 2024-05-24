@@ -1,7 +1,7 @@
-mod config;
 mod check;
-mod licenser;
+mod config;
 mod errors;
+mod licenser;
 use clap::{Parser, Subcommand};
 
 /// Simple program to greet a person
@@ -15,7 +15,7 @@ struct Args {
 }
 
 #[derive(Subcommand, Debug)]
-enum RootSubCommand{
+enum RootSubCommand {
     LicenseHeader(LicenseHeader),
 }
 
@@ -29,15 +29,15 @@ struct LicenseHeader {
     remove: bool,
     #[arg(short, long)]
     check: bool,
-    files: Vec<String>
+    files: Vec<String>,
 }
 
 fn main() {
     let args = Args::parse();
     match args.cmd {
-        RootSubCommand::LicenseHeader (cmd) => {
+        RootSubCommand::LicenseHeader(cmd) => {
             let cfg = config::load(&cmd.config).unwrap();
-            if !(cmd.apply ^ cmd.remove ^ cmd.check ) {
+            if !(cmd.apply ^ cmd.remove ^ cmd.check) {
                 panic!("apply - remove - check flags should be used independently")
             }
             let s = licenser::Licenser::new(cmd.files, cfg);
@@ -53,7 +53,7 @@ fn main() {
                     println!("{}", elem);
                 }
             }
-        },
+        }
         _ => (),
     }
 }
