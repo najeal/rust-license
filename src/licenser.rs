@@ -87,7 +87,7 @@ impl Licenser {
         let mut to_add = vec![];
         for file_path in self.file_paths.iter() {
             let mut buffer = vec![0; file_toread_len];
-            let file = File::open(file_path)?;
+            let file = File::open(file_path).expect(&format!("{}", file_path));
             match file.read_exact_at(&mut buffer, 0) {
                 Err(e) if e.kind() == io::ErrorKind::UnexpectedEof => {
                     to_add.push(file_path);
