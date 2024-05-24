@@ -125,7 +125,7 @@ fn replace_header_placeholder(header: &str) -> String {
 /// reg_header generate a regex from the header
 fn generate_header_regex(header: &str) -> Regex {
     let escaped_str = regex::escape(&header.replace("{{YEAR}}", "\\d{4}"));
-    let reg_str = format!("^{}(?:\n|\r\n)", escaped_str);
+    let reg_str = format!(r"^{}(?:\n|\r\n)", escaped_str);
     Regex::new(&reg_str).unwrap()
 }
 
